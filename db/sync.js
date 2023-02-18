@@ -71,7 +71,7 @@ const Session = sequelize.define('Session', {
     allowNull: true
   }
 }, {
-  tableName: 'sessions', // set the table name to 'sessions'
+  tableName: 'Sessions', // set the table name to 'sessions'
   underscored: true // use underscored naming convention for columns
 });
 

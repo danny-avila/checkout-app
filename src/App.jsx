@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
 // import axios from 'axios';
@@ -8,10 +9,9 @@ function App() {
   return (
     <Routes>
       <Route
-        exact
+        element={<Home />}
         path="/"
       >
-        <Home />
       </Route>
       {/* <Route path="/about">
           <About />

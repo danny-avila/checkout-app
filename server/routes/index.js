@@ -1,3 +1,3 @@
-const words = require('./words');
+// const words = require('./words');
 
-module.exports = { words };
+// module.exports = { words };

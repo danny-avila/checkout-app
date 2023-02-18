@@ -2,7 +2,13 @@ const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize('checkout', 'root', '1234', {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mysql',
+});
+
+sequelize.authenticate().then(() => {
+  console.log(`Database connected to myql checkout`)
+}).catch((err) => {
+  console.log(err)
 });
 
 // Test connection
