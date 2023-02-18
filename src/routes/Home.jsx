@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { redirect } from "react-router-dom";
 import axios from 'axios';
 
 export default function Home() {
@@ -17,17 +18,22 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(e.target);
 
     console.log(name, email, password);
 
-    // axios.post('http://localhost:5000/users', {
-    //   name,
-    //   email,
-    //   password
-    // });
+    const res = await axios.post('http://localhost:5000/users', {
+      name,
+      email,
+      password
+    });
+
+    console.log(res);
+
+    if (res.status === 201) {
+      redirect('/checkout');
+    }
   };
 
   return (

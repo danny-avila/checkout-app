@@ -1,6 +1,6 @@
 const requireLogin = (req, res, next) => {
   if (!req.session.user) {
-    res.redirect('/login');
+    res.send({ url: '/'});
   } else {
     next();
   }

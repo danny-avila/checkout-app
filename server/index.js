@@ -4,7 +4,7 @@ const sequelize = require('../db/connect');
 const requireLogin = require('./middleware/requireLogin');
 const port = 5000;
 const path = require('path');
-// const routes = require('./routes');
+const routes = require('./routes');
 const projectPath = path.join(__dirname, '..');
 
 const app = express();
@@ -24,14 +24,15 @@ app.use(
   })
 );
 
+app.use(express.json());
+app.use('/users', routes.users);
+
 app.use((req, res, next) => {
   console.log(req.session, req.sessionID);
   next();
 });
 
-app.use(express.json());
-
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
   console.log(path.join(projectPath, 'public', 'index.html'));
   res.sendFile(path.join(projectPath, 'public', 'index.html'));
 });

@@ -4,7 +4,7 @@ const sequelize = require('./connect');
 const User = sequelize.define('User', {
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
@@ -16,43 +16,53 @@ const User = sequelize.define('User', {
   },
   addr_1: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   addr_2: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   city: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   state: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   zip: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   credit_card: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   cc_expiry: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   cc_cvv: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
   cc_zip: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: ''
   },
 });
 
@@ -61,6 +71,15 @@ const Session = sequelize.define('Session', {
     type: DataTypes.STRING,
     allowNull: false,
     primaryKey: true
+  },
+  userId: {
+    type: DataTypes.INTEGER, // assuming that the user ID is an integer
+    allowNull: false,
+    field: 'user_id', // specify the column name in the table
+    references: {
+      model: 'Users', // name of the User model
+      key: 'id' // name of the primary key of the User model
+    }
   },
   expires: {
     type: DataTypes.DATE,
@@ -72,6 +91,7 @@ const Session = sequelize.define('Session', {
   }
 }, {
   tableName: 'Sessions', // set the table name to 'sessions'
+  timestamps: false, // disable timestamps
   underscored: true // use underscored naming convention for columns
 });
 
