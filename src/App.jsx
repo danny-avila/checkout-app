@@ -86,20 +86,23 @@ function App() {
           Checkout
         </button>
       ) : (
-        <div className="m-8 flex w-screen flex-col">
-          {progress === 0 && forms[progress]}
-          {progress === 1 && forms[progress]}
-          {progress === 2 && forms[progress]}
-          {progress === 3 && forms[progress]}
-          <div className="flex">
-            <button
-              className="m-2 mt-4 ml-auto w-1/4 rounded border-2 border-black p-1"
-              onClick={progress < 3 ? setNext : submit}
-            >
-              {progress < 3 ? 'Next' : 'Purchase'}
-            </button>
+        <>
+          <div className="m-8 flex w-screen flex-col items-center">
+            {progress === 0 && forms[progress]}
+            {progress === 1 && forms[progress]}
+            {progress === 2 && forms[progress]}
+            {progress === 3 && forms[progress]}
+
+            <div className="flex w-screen flex-col items-center">
+              <button
+                className="m-2 mt-4 w-1/4 rounded border-2 border-black p-1"
+                onClick={progress < 3 ? setNext : submit}
+              >
+                {progress < 3 ? 'Next' : 'Purchase'}
+              </button>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
