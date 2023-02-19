@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Form3({ data, changeHandler }) {
+export default function Form3({ data, inputProps, changeHandler }) {
   return (
     <form>
       <div>
@@ -11,7 +11,7 @@ export default function Form3({ data, changeHandler }) {
           Credit Card #
         </label>
         <input
-          className="m-2 w-full"
+          className={"m-2 w-1/2 " + inputProps}
           type="text"
           name="credit_card"
           value={data.credit_card}
@@ -26,7 +26,7 @@ export default function Form3({ data, changeHandler }) {
           Expiry Date
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="cc_expiry"
           value={data.cc_expiry}
@@ -39,7 +39,7 @@ export default function Form3({ data, changeHandler }) {
           CVV
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="cc_cvv"
           value={data.cc_cvv}
@@ -52,7 +52,7 @@ export default function Form3({ data, changeHandler }) {
           Billing Zip Code
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="cc_zip"
           value={data.cc_zip}

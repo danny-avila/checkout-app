@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Form1({ data, changeHandler }) {
+export default function Form1({ data, inputProps, changeHandler }) {
   return (
     <form>
       <label
@@ -10,7 +10,7 @@ export default function Form1({ data, changeHandler }) {
         Name
       </label>
       <input
-        className="m-2"
+        className={"m-2 " + inputProps}
         type="text"
         name="name"
         value={data.name}
@@ -23,7 +23,7 @@ export default function Form1({ data, changeHandler }) {
         Email
       </label>
       <input
-        className="m-2"
+        className={"m-2 " + inputProps}
         type="text"
         name="email"
         value={data.email}
@@ -36,7 +36,7 @@ export default function Form1({ data, changeHandler }) {
         Password
       </label>
       <input
-        className="m-2"
+        className={"m-2 " + inputProps}
         type="text"
         name="password"
         value={data.password}

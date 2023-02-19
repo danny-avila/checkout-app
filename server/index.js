@@ -1,7 +1,6 @@
 const express = require('express');
 const session = require('express-session');
 const sequelize = require('../db/connect');
-const requireLogin = require('./middleware/requireLogin');
 const cors = require('cors');
 const port = 5000;
 const path = require('path');

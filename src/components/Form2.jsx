@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Form2({ data, changeHandler }) {
+export default function Form2({ data, inputProps, changeHandler }) {
   return (
     <form>
       <div>
@@ -11,7 +11,7 @@ export default function Form2({ data, changeHandler }) {
           Address
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="addr_1"
           value={data.addr_1}
@@ -24,7 +24,7 @@ export default function Form2({ data, changeHandler }) {
           Line 2
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="addr_2"
           value={data.addr_2}
@@ -37,7 +37,7 @@ export default function Form2({ data, changeHandler }) {
           City
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="city"
           value={data.city}
@@ -52,7 +52,7 @@ export default function Form2({ data, changeHandler }) {
           State
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="state"
           value={data.state}
@@ -65,7 +65,7 @@ export default function Form2({ data, changeHandler }) {
           Zip Code
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="zip"
           value={data.zip}
@@ -78,7 +78,7 @@ export default function Form2({ data, changeHandler }) {
           Phone #
         </label>
         <input
-          className="m-2"
+          className={"m-2 " + inputProps}
           type="text"
           name="phone"
           value={data.phone}

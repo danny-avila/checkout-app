@@ -65,7 +65,7 @@ module.exports = {
       console.log(error);
     }
   },
-  read: (user) => User.findOne({ where: user }),
+  read: (user) => User.findOne({ where: { email: user.email } }),
   update: (user) => User.update(user, { where: { email: user.email } }),
   delete: (user) => User.destroy({ where: user })
 };

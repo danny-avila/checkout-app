@@ -39,12 +39,24 @@ Session.sync();
 module.exports = {
   create: async (session) => {
     try {
+      const existing = await Session.findOne({
+        where: {
+          sid: session.sid
+        }
+      });
+
+      if (existing) {
+        const message = 'Session already exists: ' + session.sid;
+        console.log(message);
+        return { message };
+      }
+
       return await Session.create(session);
     } catch (error) {
       console.log(error);
+      return { message: error.message };
     }
   },
-  read: (session) => Session.findOne({ where: session }),
-  update: (session) => Session.update(session, { where: { email: session.email } }),
+  update: (session) => Session.update(session, { where: { sid: session.sid } }),
   delete: (session) => Session.destroy({ where: session })
 };

@@ -1,27 +1,28 @@
-// express route for /users
-
 const express = require('express');
 const router = express.Router();
 const models = require('../../models');
 
 router.post('/', async (req, res) => {
-  const { name, email, password } = req.body;
+  const formData = req.body;
+  console.log('formData', formData);
+  const existing = await models.User.read(formData);
 
-  console.log('session', req.session, req.sessionID);
+  if (existing) {
+    const message = `User already exists: ${formData.email}, updating user...`;
+    console.log(message);
+    const user = await models.User.update(formData);
+    res.status(201).send({ ...user, ...req.session });
+    return;
+  };
 
-  const user = await models.User.create({
-    name,
-    email,
-    password
-  });
+  const user = await models.User.create(formData);
 
-  req.session.authenticated = true;
   req.session.user = {
     id: user.id,
     password: user.password,
   };
 
-  const session = await models.Session.create({
+  const session = await models.Session.update({
     sid: req.sessionID,
     userId: user.id,
     expires: req.session.cookie._expires,
@@ -30,7 +31,5 @@ router.post('/', async (req, res) => {
 
   res.status(201).send({ ...user, ...session });
 });
-
-// router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 module.exports = router;
