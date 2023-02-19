@@ -2,12 +2,14 @@ const express = require('express');
 const session = require('express-session');
 const sequelize = require('../db/connect');
 const requireLogin = require('./middleware/requireLogin');
+const cors = require('cors');
 const port = 5000;
 const path = require('path');
 const routes = require('./routes');
 const projectPath = path.join(__dirname, '..');
 
 const app = express();
+app.use(cors());
 app.use(express.static(path.join(projectPath, 'public')));
 
 app.use(
@@ -26,6 +28,7 @@ app.use(
 
 app.use(express.json());
 app.use('/users', routes.users);
+app.use('/checkout', routes.checkout);
 
 app.use((req, res, next) => {
   console.log(req.session, req.sessionID);

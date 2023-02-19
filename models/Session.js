@@ -12,7 +12,7 @@ Session.init({
   },
   userId: {
     type: DataTypes.INTEGER, // assuming that the user ID is an integer
-    allowNull: false,
+    allowNull: true,
     field: 'user_id', // specify the column name in the table
     references: {
       model: 'Users', // name of the User model
